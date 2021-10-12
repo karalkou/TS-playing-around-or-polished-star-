@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { createData } from "./create-data";
 
 export default function App() {
-  const columns: IColumn[] = useMemo(
+  const columns = useMemo<IColumn[]>(
     () => [
       { key: "firstName", title: "First name" },
       { key: "lastName", title: "Last name" },
