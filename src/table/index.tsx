@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { StyledTable } from "./styled";
 import { Search } from "./search";
 
@@ -16,22 +17,24 @@ interface IProps {
 }
 
 export const Table = React.memo((props: IProps) => {
+  const { data, columns } = props;
+
   return (
     <div>
       <Search onSearch={value => console.log(value)} />
       <StyledTable>
         <thead>
           <tr>
-            {props.columns.map(column => (
-              <th>{column.title}</th>
+            {columns.map(column => (
+              <th key={column.key}>{column.title}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {props.data.map(item => (
-            <tr>
-              {props.columns.map(column => (
-                <td>
+          {data.map(item => (
+            <tr key={item.id}>
+              {columns.map(column => (
+                <td key={column.key}>
                   {column.render
                     ? column.render(item[column.key])
                     : item[column.key]}
