@@ -34,18 +34,21 @@ export const StyledPaginateContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 20px;
-    min-height: 20px;
+    min-width: 30px;
+    min-height: 30px;
     padding: 0 5px;
     a {
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 3px;
       color: black;
       &:hover {
         cursor: pointer;
       }
     }
     .active {
+      border-color: blue;
       color: blue;
-      text-decoration: underline;
     }
   }
   .disabled {
