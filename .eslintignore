@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+assets
+
+# Compiled output
+build
+
+# Test coverage
+coverage
+
+# Editors and IDEs
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Thirdparty code in project
+
+#Default messages
+src/**/styled.ts
