@@ -1,6 +1,20 @@
 import * as namor from 'namor';
 import * as _ from 'lodash';
 
+const STATUSES = {
+    RELATIONSHIP: 'relationship',
+    COMPLICATED: 'complicated',
+    SINGLE: 'single',
+} as const;
+
+// below is an interesting type definition
+// to understand it see https://stackoverflow.com/questions/53662208/types-from-both-keys-and-values-of-object-in-typescript
+// and this https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
+// equals to
+// type Key = keyof typeof STATUSES; // RELATIONSHIP | COMPLICATED | SINGLE
+// export type TStatus = typeof STATUSES[Key]; // 'relationship' | 'complicated' | 'single'
+export type TStatus = typeof STATUSES[keyof typeof STATUSES];
+
 export interface INewPerson {
     id: string;
     firstName: string;
@@ -8,7 +22,7 @@ export interface INewPerson {
     age: number;
     visits: number;
     progress: number;
-    status: 'relationship' | 'complicated' | 'single';
+    status: TStatus;
     tags: Array<string>;
 }
 
@@ -20,10 +34,10 @@ const generateId = (): string => {
 
 const getNewPerson = (): INewPerson => {
     const statusChance = Math.random();
-    const getStatus = () => {
-        if (statusChance > 0.66) return 'relationship';
-        if (statusChance > 0.33) return 'complicated';
-        return 'single';
+    const getStatus = (): TStatus => {
+        if (statusChance > 0.66) return STATUSES.RELATIONSHIP;
+        if (statusChance > 0.33) return STATUSES.COMPLICATED;
+        return STATUSES.SINGLE;
     };
 
     return {
