@@ -7,6 +7,12 @@ const STATUSES = {
     SINGLE: 'single',
 } as const;
 
+/* enum STATUSES {
+    RELATIONSHIP = 'relationship',
+    COMPLICATED = 'complicated',
+    SINGLE = 'single',
+} */
+
 // below is an interesting type definition
 // to understand it see https://stackoverflow.com/questions/53662208/types-from-both-keys-and-values-of-object-in-typescript
 // and this https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
@@ -23,7 +29,10 @@ export interface INewPerson {
     visits: number;
     progress: number;
     status: TStatus;
+    // status: STATUSES;
     tags: Array<string>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [index: string]: any;
 }
 
 const generateId = (): string => {
@@ -35,7 +44,9 @@ const generateId = (): string => {
 const getNewPerson = (): INewPerson => {
     const statusChance = Math.random();
     const getStatus = (): TStatus => {
+        // const getStatus = (): STATUSES => {
         if (statusChance > 0.66) return STATUSES.RELATIONSHIP;
+        // if (statusChance > 0.66) return 'hoho';
         if (statusChance > 0.33) return STATUSES.COMPLICATED;
         return STATUSES.SINGLE;
     };
