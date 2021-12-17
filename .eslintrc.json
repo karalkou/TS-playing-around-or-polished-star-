@@ -53,6 +53,11 @@
         // https://github.com/typescript-eslint/typescript-eslint/blob/v4.1.0/packages/eslint-plugin/docs/rules/no-use-before-define.md
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
+        // note you must disable the base rule as it can report incorrect errors
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
         "prettier/prettier": "error",
         "no-underscore-dangle": "off",
         "class-methods-use-this": "off",
