@@ -1,15 +1,17 @@
-import * as React from "react";
+import * as React from 'react';
+
+import { StyledInput } from './styled';
 
 interface IProps {
-  onSearch: (value: string) => void;
+    onSearch: (value: string) => void;
 }
 
 export const Search = React.memo((props: IProps) => {
-  return (
-    <input
-      type="search"
-      onChange={e => props.onSearch(e.target.value)}
-      placeholder="Search"
-    />
-  );
+    return (
+        <StyledInput
+            type="search"
+            onChange={(e) => props.onSearch(e.target.value)}
+            placeholder="Search"
+        />
+    );
 });
